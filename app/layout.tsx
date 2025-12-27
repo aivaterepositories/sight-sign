@@ -7,9 +7,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Sight-Sign | Construction Site Safety Induction',
   description: 'QR code-based digital sign-in system for construction sites',
-  icons: {
-    icon: '/favicon.ico',
-  },
 }
 
 export default function RootLayout({
