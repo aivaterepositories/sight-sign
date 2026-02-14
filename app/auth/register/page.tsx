@@ -35,15 +35,30 @@ export default function RegisterPage() {
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
+        options: {
+          data: {
+            name: formData.name,
+            phone: formData.phone,
+            company: formData.company,
+          },
+        },
       })
 
       if (authError) throw authError
       if (!authData.user) throw new Error('User creation failed')
 
-      // Step 2: Generate QR code hash
+      // Step 2: Sign in to establish session (needed for RLS)
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      })
+
+      if (signInError) throw signInError
+
+      // Step 3: Generate QR code hash
       const qrCodeHash = generateQRCodeHash(authData.user.id)
 
-      // Step 3: Create worker profile
+      // Step 4: Create worker profile (now with authenticated session)
       const { error: workerError } = await supabase.from('workers').insert({
         id: authData.user.id,
         name: formData.name,
@@ -65,20 +80,25 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-gradient-to-b from-blue-50 to-white">
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-gradient-to-br from-purple-50 to-purple-100">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
+          <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-purple-500/30">
+            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+          </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Worker Registration
           </h1>
-          <p className="text-gray-600">
+          <p className="text-purple-600 font-medium">
             Create your account to get your unique QR code
           </p>
         </div>
 
         {/* Registration Form */}
-        <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+        <div className="bg-white p-8 shadow-xl border border-purple-100">
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Error Message */}
             {error && (
@@ -191,7 +211,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+              className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold hover:from-purple-700 hover:to-purple-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all shadow-lg shadow-purple-500/30"
             >
               {loading ? 'Creating Account...' : 'Create Account'}
             </button>
@@ -200,7 +220,7 @@ export default function RegisterPage() {
           {/* Login Link */}
           <div className="mt-6 text-center text-sm text-gray-600">
             Already have an account?{' '}
-            <Link href="/login" className="text-blue-600 hover:underline">
+            <Link href="/auth/login" className="text-purple-600 hover:underline font-semibold">
               Sign in here
             </Link>
           </div>
@@ -210,7 +230,7 @@ export default function RegisterPage() {
         <div className="mt-6 text-center">
           <Link
             href="/"
-            className="text-sm text-gray-600 hover:text-gray-900 hover:underline"
+            className="text-sm text-purple-600 hover:text-purple-700 hover:underline font-medium"
           >
             ← Back to Home
           </Link>

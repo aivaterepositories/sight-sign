@@ -86,7 +86,7 @@ export default function AdminDashboard() {
   if (error || !isAdmin) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-purple-50 to-purple-100 p-4">
-        <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-purple-100">
+        <div className="max-w-md w-full bg-white p-8 shadow-xl border border-purple-100">
           <div className="text-center mb-6">
             <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
@@ -110,13 +110,13 @@ export default function AdminDashboard() {
           <div className="space-y-3">
             <Link
               href="/admin/setup"
-              className="block w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white text-center font-semibold rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30"
+              className="block w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white text-center font-semibold hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30"
             >
               Set Up Admin Account
             </Link>
             <button
               onClick={handleSignOut}
-              className="w-full py-3 px-4 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-colors"
+              className="w-full py-3 px-4 bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 transition-colors"
             >
               Sign Out
             </button>
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
           <Link
             href="/admin/dashboard"
             onClick={() => setActiveTab('dashboard')}
-            className={`flex items-center gap-3 px-4 py-3 rounded-xl mb-2 transition-all ${
+            className={`flex items-center gap-3 px-4 py-3 mb-2 transition-all ${
               activeTab === 'dashboard'
                 ? 'bg-white text-purple-700 shadow-lg'
                 : 'text-purple-100 hover:bg-purple-800'
@@ -156,7 +156,7 @@ export default function AdminDashboard() {
           <Link
             href="/admin/sites/new"
             onClick={() => setActiveTab('sites')}
-            className={`flex items-center gap-3 px-4 py-3 rounded-xl mb-2 transition-all ${
+            className={`flex items-center gap-3 px-4 py-3 mb-2 transition-all ${
               activeTab === 'sites'
                 ? 'bg-white text-purple-700 shadow-lg'
                 : 'text-purple-100 hover:bg-purple-800'
@@ -174,7 +174,7 @@ export default function AdminDashboard() {
           <Link
             href="/admin/scan"
             onClick={() => setActiveTab('scan')}
-            className={`flex items-center gap-3 px-4 py-3 rounded-xl mb-2 transition-all ${
+            className={`flex items-center gap-3 px-4 py-3 mb-2 transition-all ${
               activeTab === 'scan'
                 ? 'bg-white text-purple-700 shadow-lg'
                 : 'text-purple-100 hover:bg-purple-800'
@@ -190,7 +190,7 @@ export default function AdminDashboard() {
 
           <button
             onClick={handleSignOut}
-            className="flex items-center gap-3 px-4 py-3 rounded-xl text-purple-100 hover:bg-purple-800 transition-all w-full"
+            className="flex items-center gap-3 px-4 py-3 text-purple-100 hover:bg-purple-800 transition-all w-full"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -228,7 +228,7 @@ export default function AdminDashboard() {
                 <input
                   type="search"
                   placeholder="Search..."
-                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="pl-10 pr-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
                 <svg
                   className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"
@@ -253,9 +253,9 @@ export default function AdminDashboard() {
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* Total Sites Card */}
-            <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-6 text-white shadow-lg shadow-purple-500/30">
+            <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-6 text-white shadow-lg shadow-purple-500/30">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-white/20 flex items-center justify-center">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
@@ -266,9 +266,9 @@ export default function AdminDashboard() {
             </div>
 
             {/* Workers On-Site Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+            <div className="bg-white p-6 shadow-md border border-gray-100">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-green-100 flex items-center justify-center">
                   <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
@@ -280,9 +280,9 @@ export default function AdminDashboard() {
             </div>
 
             {/* Today's Sign-Ins Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+            <div className="bg-white p-6 shadow-md border border-gray-100">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-100 flex items-center justify-center">
                   <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
@@ -295,12 +295,12 @@ export default function AdminDashboard() {
           </div>
 
           {/* Sites List */}
-          <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
+          <div className="bg-white shadow-md border border-gray-100 overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
               <h3 className="text-lg font-bold text-gray-900">My Sites</h3>
               <Link
                 href="/admin/sites/new"
-                className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30 text-sm font-semibold flex items-center gap-2"
+                className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30 text-sm font-semibold flex items-center gap-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -321,7 +321,7 @@ export default function AdminDashboard() {
                   <p className="text-gray-500 mb-6">Create your first construction site to start managing workers</p>
                   <Link
                     href="/admin/sites/new"
-                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30 font-semibold"
+                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30 font-semibold"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -334,7 +334,7 @@ export default function AdminDashboard() {
                   {sites.map((site, index) => (
                     <div
                       key={site.id}
-                      className="bg-gradient-to-r from-purple-50 to-purple-100/50 rounded-xl p-5 border border-purple-200 hover:shadow-md transition-all"
+                      className="bg-gradient-to-r from-purple-50 to-purple-100/50 p-5 border border-purple-200 hover:shadow-md transition-all"
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
@@ -364,7 +364,7 @@ export default function AdminDashboard() {
                         <div className="flex gap-2">
                           <Link
                             href={`/admin/scan?site=${site.id}`}
-                            className="px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-colors text-sm font-semibold shadow-lg shadow-purple-500/30"
+                            className="px-4 py-2 bg-purple-600 text-white hover:bg-purple-700 transition-colors text-sm font-semibold shadow-lg shadow-purple-500/30"
                           >
                             Scan QR
                           </Link>

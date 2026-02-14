@@ -84,28 +84,32 @@ export default function AdminSetupPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gradient-to-b from-blue-50 to-white p-4">
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-purple-50 to-purple-100 p-4">
       <div className="w-full max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="text-6xl mb-4">🔧</div>
+          <div className="w-24 h-24 bg-gradient-to-br from-purple-600 to-purple-700 flex items-center justify-center mx-auto mb-4 shadow-2xl shadow-purple-500/30">
+            <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+          </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Admin Setup Helper
           </h1>
-          <p className="text-gray-600">
+          <p className="text-purple-600 font-medium">
             Create a test site and grant yourself admin access
           </p>
         </div>
 
         {/* Main Card */}
-        <div className="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+        <div className="bg-white p-8 shadow-xl border border-purple-100">
           {!success && !loading && (
             <div className="space-y-6">
               {/* Info */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-purple-50 border border-purple-200 p-4">
                 <div className="flex gap-3">
                   <svg
-                    className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+                    className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -117,9 +121,9 @@ export default function AdminSetupPage() {
                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <div className="text-sm text-blue-800">
+                  <div className="text-sm text-purple-800">
                     <p className="font-semibold mb-2">Development Tool</p>
-                    <p className="text-blue-700">
+                    <p className="text-purple-700">
                       This is a helper tool for MVP development. In production, admins
                       would be invited by super admins or created through a proper
                       onboarding flow.
@@ -199,13 +203,13 @@ export default function AdminSetupPage() {
                 <button
                   onClick={createTestSiteAndAdmin}
                   disabled={loading}
-                  className="flex-1 py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                  className="flex-1 py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold hover:from-purple-700 hover:to-purple-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all shadow-lg shadow-purple-500/30"
                 >
                   Set Up Admin Access
                 </button>
                 <Link
                   href="/admin/dashboard"
-                  className="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition-colors"
+                  className="px-6 py-3 bg-purple-50 text-purple-700 font-semibold hover:bg-purple-100 transition-all border border-purple-200"
                 >
                   Cancel
                 </Link>
@@ -216,7 +220,7 @@ export default function AdminSetupPage() {
           {/* Loading State */}
           {loading && (
             <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
               <p className="mt-4 text-gray-600">Creating site and setting up admin access...</p>
             </div>
           )}
@@ -252,7 +256,7 @@ export default function AdminSetupPage() {
 
         {/* Manual Option */}
         {!success && (
-          <div className="mt-6 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <div className="mt-6 bg-white p-6 shadow-md border border-purple-100">
             <h3 className="text-sm font-semibold text-gray-900 mb-2">
               Prefer Manual Setup?
             </h3>
@@ -264,7 +268,7 @@ export default function AdminSetupPage() {
                 Go to{' '}
                 <Link
                   href="/admin/sites/new"
-                  className="text-blue-600 hover:underline"
+                  className="text-purple-600 hover:underline font-semibold"
                 >
                   Create New Site
                 </Link>
@@ -279,7 +283,7 @@ export default function AdminSetupPage() {
         <div className="mt-6 text-center">
           <Link
             href="/"
-            className="text-sm text-gray-600 hover:text-gray-900 hover:underline"
+            className="text-sm text-purple-600 hover:text-purple-700 hover:underline font-medium"
           >
             ← Back to Home
           </Link>
